@@ -3,6 +3,7 @@ package com.john.employerpostings.base_camp_employer_postings.repositories;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 import com.john.employerpostings.base_camp_employer_postings.models.JobPost;
 
@@ -42,8 +43,14 @@ public class PostgresJobPostRepository{
         return jdbc.query("SELECT * FROM employer_posts;", this::mapToJobPost);
     }
 
+    public Optional<JobPost> findJobById(int id){
+        String sql = "SELECT * FROM employer_posts WHERE id= ?;";
+        return Optional.ofNullable(jdbc.queryForObject(sql, this::mapToJobPost, id));
+    }
+
     public JobPost mapToJobPost(ResultSet rs, int rowNum) throws SQLException {
         return new JobPost(
+        rs.getInt("id"),
         rs.getString("employer_name"), 
         rs.getString("address"), 
         rs.getString("position"), 

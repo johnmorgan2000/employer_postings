@@ -3,6 +3,7 @@ package com.john.employerpostings.base_camp_employer_postings.models;
 import java.util.Date;
 
 public class JobPost{
+    public int id;
     public String name;
     public String address;
     public String position;
@@ -19,7 +20,8 @@ public class JobPost{
         this.postedDate = getTime();
     }
 
-    public JobPost(String name, String address, String position, String benefits,String applyUrl, Date postedDate){
+    public JobPost(int id, String name, String address, String position, String benefits,String applyUrl, Date postedDate){
+        this.id = id;
         this.name = name;
         this.address = address;
         this.position = position;
