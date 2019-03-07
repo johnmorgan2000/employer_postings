@@ -19,6 +19,15 @@ public class JobPost{
         this.postedDate = getTime();
     }
 
+    public JobPost(String name, String address, String position, String benefits,String applyUrl, Date postedDate){
+        this.name = name;
+        this.address = address;
+        this.position = position;
+        this.benefits = benefits;
+        this.applyUrl = applyUrl;
+        this.postedDate = postedDate;
+    }
+
     public static Date getTime(){
         Date date = new Date();
         return new Date(date.getTime());
