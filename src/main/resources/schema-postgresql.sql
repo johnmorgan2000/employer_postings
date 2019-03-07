@@ -1,10 +1,13 @@
+-- DROP TABLE employer_posts;
+
 CREATE TABLE IF NOT EXISTS employer_posts(
     id SERIAL NOT NULL,
+    name TEXT NOT NULL,
     address TEXT NOT NULL,
-    postition TEXT NOT NULL,
+    position TEXT NOT NULL,
     benefits TEXT NOT NULL,
-    applu_url TEXT,
-    posted_date DATE NOT NULl
+    apply_url TEXT,
+    posted_date DATE NOT NULL
 
 );
 
