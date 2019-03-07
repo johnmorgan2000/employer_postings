@@ -15,9 +15,16 @@ public class PostgresJobPostRepository{
         jdbc = jdbcTemplate;
     }
 
+    public Integer countRows(){
+        String sql = "SELECT COUNT(*) FROM employer_posts;";
+        Integer count = jdbc.queryForObject(sql, Integer.class);
+        return count;
+    }
+
     public void addJobPost(JobPost jp){
+        String sql = "INSERT INTO employer_posts (employer_name, address, position, benefits, apply_url, posted_date) VALUES (?, ?, ?, ?, ?, ?);";
         jdbc.update(
-            "INSERT INTO employer_posts (name, address, position, benefits, apply_url, posted_date) VALUES (?, ?, ?, ?, ?, ?)",
+            sql,
             jp.getName(),
             jp.getAddress(),
             jp.getPosition(),
