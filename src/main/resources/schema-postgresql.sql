@@ -10,6 +10,13 @@ CREATE TABLE IF NOT EXISTS employer_posts(
     posted_date DATE NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS admin_comments(
+    id SERIAL NOT NULL,
+    title TEXT,
+    description TEXT NOT NULL,
+    post_id int REFERENCES employer_posts (id)
+)
+
 ALTER TABLE employer_posts OWNER TO "user";
 
 SELECT * FROM employer_posts;
