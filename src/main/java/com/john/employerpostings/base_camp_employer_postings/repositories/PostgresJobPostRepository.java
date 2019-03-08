@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import com.john.employerpostings.base_camp_employer_postings.models.Comment;
 import com.john.employerpostings.base_camp_employer_postings.models.JobPost;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class PostgresJobPostRepository{
         );
     }
 
+    public void addComment(Comment com){
+        String sql = "INSERT INTO admin_comments (title, description, post_id) VALUES (?, ?, ?);";
+        jdbc.update(sql, com.getTitle(), com.getDescription(), com.getPostId());
+    }
+
     public List<JobPost> findAllJobs(){
         return jdbc.query("SELECT * FROM employer_posts;", this::mapToJobPost);
     }
@@ -46,6 +52,19 @@ public class PostgresJobPostRepository{
     public Optional<JobPost> findJobById(int id){
         String sql = "SELECT * FROM employer_posts WHERE id= ?;";
         return Optional.ofNullable(jdbc.queryForObject(sql, this::mapToJobPost, id));
+    }
+
+    public List<Comment> findPostComments(int id){
+        String sql = "SELECT * FROM admin_comments WHERE id = ?";
+        return jdbc.query(sql, this::mapToComment, id);
+    }
+
+    public Comment mapToComment(ResultSet rs, int rowNum) throws SQLException {
+        return new Comment(
+            rs.getString("title"),
+            rs.getString("description"),
+            rs.getInt("post_id")
+        );
     }
 
     public JobPost mapToJobPost(ResultSet rs, int rowNum) throws SQLException {
