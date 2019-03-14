@@ -53,6 +53,6 @@ public class AdminController {
     public String postComment(CreateCommentForm form, Model model, @PathVariable(value = "id") String id) {
         Comment com = new Comment(form.getTitle(), form.getDescription(), Integer.parseInt(id));
         jpRepository.addComment(com);
-        return "redirect:/admin/jobs";
+        return "redirect:/admin/jobs/" + id;
     }
 }
