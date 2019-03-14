@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS employer_posts(
     position TEXT NOT NULL,
     benefits TEXT NOT NULL,
     apply_url TEXT,
+    image_url TEXT,
     posted_date DATE NOT NULL
 );
 
