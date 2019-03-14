@@ -1,5 +1,6 @@
 package com.john.employerpostings.base_camp_employer_postings.models;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class JobPost{
@@ -10,7 +11,7 @@ public class JobPost{
     public String benefits;
     public String applyUrl;
     public String imageUrl;
-    public Date postedDate;
+    public Timestamp postedDate;
 
     public JobPost(String name, String address, String position, String benefits, String applyUrl, String imageUrl){
         this.name = name;
@@ -22,7 +23,7 @@ public class JobPost{
         this.postedDate = getTime();
     }
 
-    public JobPost(int id, String name, String address, String position, String benefits,String applyUrl, String imageUrl, Date postedDate){
+    public JobPost(int id, String name, String address, String position, String benefits,String applyUrl, String imageUrl, Timestamp postedDate){
         this.id = id;
         this.name = name;
         this.address = address;
@@ -33,9 +34,9 @@ public class JobPost{
         this.postedDate = postedDate;
     }
 
-    public static Date getTime(){
+    public static Timestamp getTime(){
         Date date = new Date();
-        return new Date(date.getTime());
+        return new Timestamp(date.getTime());
     }
 
     public String getName() {
@@ -78,14 +79,6 @@ public class JobPost{
         this.applyUrl = applyUrl;
     }
 
-    public Date getPostedDate() {
-        return postedDate;
-    }
-
-    public void setPostedDate(Date postedDate) {
-        this.postedDate = postedDate;
-    }
-
     public int getId() {
         return id;
     }
@@ -100,6 +93,14 @@ public class JobPost{
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Timestamp getPostedDate() {
+        return postedDate;
+    }
+
+    public void setPostedDate(Timestamp postedDate) {
+        this.postedDate = postedDate;
     }
 
     
