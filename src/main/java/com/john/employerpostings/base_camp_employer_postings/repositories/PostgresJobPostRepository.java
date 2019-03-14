@@ -47,7 +47,7 @@ public class PostgresJobPostRepository{
     }
 
     public List<JobPost> findAllJobs(){
-        return jdbc.query("SELECT * FROM employer_posts;", this::mapToJobPost);
+        return jdbc.query("SELECT * FROM employer_posts ORDER BY posted_date DESC;", this::mapToJobPost);
     }
 
     public Optional<JobPost> findJobById(int id){
@@ -58,6 +58,11 @@ public class PostgresJobPostRepository{
     public List<Comment> findPostComments(int id){
         String sql = "SELECT * FROM admin_comments WHERE post_id = ?";
         return jdbc.query(sql, this::mapToComment, id);
+    }
+
+    public void deletePost(int id){
+        String sql = "DELETE FROM employer_posts WHERE id = ?;";
+        jdbc.update(sql, id);
     }
 
     public Comment mapToComment(ResultSet rs, int rowNum) throws SQLException {
@@ -77,6 +82,6 @@ public class PostgresJobPostRepository{
         rs.getString("benefits"), 
         rs.getString("apply_url"), 
         rs.getString("image_url"),
-        rs.getDate("posted_date"));
+        rs.getTimestamp("posted_date"));
     }
 }
