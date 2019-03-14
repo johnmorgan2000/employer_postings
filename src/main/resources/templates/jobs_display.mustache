@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.css" />
+        <link rel="stylesheet" href="./css/main.css" />
 </head>
 <body>
+    <nav class="custom-navbar">
+            <div class="container">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     {{#jobs}}
         <a href="/jobs/{{id}}">{{name}}</a>
         <p>{{postedDate}}</p>

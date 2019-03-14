@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./../../bootstrap/bootstrap.css" />
+        <link rel="stylesheet" href="./../../css/main.css" />
+    </head>
+    <body>
+        <nav class="custom-navbar">
+            <div class="container">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    {{#detail}}
-        <p>{{name}}</p>
-        <p>{{address}}</p>
-        <p>{{position}}</p> 
+        {{#detail}}
+        <p>{{ name }}</p>
+        <p>{{ address }}</p>
+        <p>{{ position }}</p>
         <p>Comments</p>
 
         {{#comments}}
-            <p>{{title}}</p>
+        <p>{{ title }}</p>
         {{/comments}}
-        
+
         <p>Comment</p>
-    
-        <form action="/admin/jobs/{{id}}" method="post">
+
+        <form action="/admin/jobs/{{ id }}" method="post">
             <label for="title">Title: </label>
             <br />
-            <input name="title" type="text">
+            <input name="title" type="text" />
             <br />
             <label for="description">Description</label>
             <br />
-            <textarea name="description"rows="1"></textarea>
+            <textarea name="description" rows="1"></textarea>
             <br />
             <button type="submit">Submit</button>
         </form>
-    {{/detail}}
-
-   
-    
-</body>
+        {{/detail}}
+    </body>
 </html>

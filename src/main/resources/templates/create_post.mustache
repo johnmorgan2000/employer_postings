@@ -6,14 +6,22 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>BCCA Job Posting</title>
 
-        <!-- Move to file later -->
-        <style>
-            input {
-                display: block;
-            }
-        </style>
+        <link rel="stylesheet" href="./bootstrap/bootstrap.css" />
+        <link rel="stylesheet" href="./css/main.css" />
     </head>
     <body>
+        <nav class="custom-navbar">
+            <div class="container">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <form action="create" method="POST">
             <label for="name">Name: </label>
             <input type="text" name="name" required />
@@ -31,7 +39,12 @@
             <input type="text" name="applyUrl" required />
 
             <label for="imageUrl"></label>
-            <input type="file" name="imageFile" onchange="previewFile()" id="imageFileInput" />
+            <input
+                type="file"
+                name="imageFile"
+                onchange="previewFile()"
+                id="imageFileInput"
+            />
             <input class="hidden" type="text" name="imageUrl" id="imageUrl" />
 
             <button type="submit">Submit</button>
