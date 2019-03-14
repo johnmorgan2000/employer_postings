@@ -9,24 +9,27 @@ public class JobPost{
     public String position;
     public String benefits;
     public String applyUrl;
+    public String imageUrl;
     public Date postedDate;
 
-    public JobPost(String name, String address, String position, String benefits, String applyUrl){
+    public JobPost(String name, String address, String position, String benefits, String applyUrl, String imageUrl){
         this.name = name;
         this.address = address;
         this.position = position;
         this.benefits = benefits;
         this.applyUrl = applyUrl;
+        this.imageUrl = imageUrl;
         this.postedDate = getTime();
     }
 
-    public JobPost(int id, String name, String address, String position, String benefits,String applyUrl, Date postedDate){
+    public JobPost(int id, String name, String address, String position, String benefits,String applyUrl, String imageUrl, Date postedDate){
         this.id = id;
         this.name = name;
         this.address = address;
         this.position = position;
         this.benefits = benefits;
         this.applyUrl = applyUrl;
+        this.imageUrl = imageUrl;
         this.postedDate = postedDate;
     }
 
@@ -81,6 +84,22 @@ public class JobPost{
 
     public void setPostedDate(Date postedDate) {
         this.postedDate = postedDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     

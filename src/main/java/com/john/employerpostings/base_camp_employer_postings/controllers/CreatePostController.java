@@ -26,7 +26,7 @@ public class CreatePostController {
 
     @PostMapping("/create")
     public String createJob(CreatePostForm form){
-        JobPost jp = new JobPost(form.name, form.address, form.position, form.benefits, form.applyUrl);
+        JobPost jp = new JobPost(form.name, form.address, form.position, form.benefits, form.applyUrl, form.imageUrl);
         jpRepository.addJobPost(jp);
         return "redirect:/";
 

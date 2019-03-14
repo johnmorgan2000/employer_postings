@@ -16,6 +16,8 @@ public class CreatePostForm{
 
     public String applyUrl;
 
+    public String imageUrl;
+
     public String getName() {
         return name;
     }
@@ -56,5 +58,12 @@ public class CreatePostForm{
         this.applyUrl = applyUrl;
     }
 
-    
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 }
