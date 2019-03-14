@@ -7,7 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>404</h1>
-    
+    {{#jobs}}
+    <a href="/admin/jobs/{{id}}">{{name}}</a>
+        <p>{{postedDate}}</p>
+    {{/jobs}}
+    {{^jobs}}
+    <p>No current jobs</p>
+    {{/jobs}}
 </body>
 </html>

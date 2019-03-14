@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-    {{#detail}}
-        <p>{{name}}</p>
-        <p>{{address}}</p>
-        <p>{{position}}</p>
-    {{/detail}}
-    
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        {{#detail}}
+        <p>{{ name }}</p>
+        <img src="{{imageUrl}}" alt="" srcset="" width="100" height="100">
+        <p>{{ address }}</p>
+        <p>{{ position }}</p>
+        <p>Comments</p>
+        {{ #comments }}
+        <p>{{ title }}</p>
+        {{ /comments }}
+        {{/detail}}
+    </body>
 </html>
