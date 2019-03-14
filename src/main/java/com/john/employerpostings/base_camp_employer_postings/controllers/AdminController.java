@@ -55,4 +55,11 @@ public class AdminController {
         jpRepository.addComment(com);
         return "redirect:/admin/jobs/" + id;
     }
+
+    @GetMapping("/admin/jobs/{id}/delete")
+    public String deletePost(@PathVariable(value = "id") String id){
+        System.out.println(id);
+        jpRepository.deletePost( Integer.parseInt(id));
+        return "redirect:/admin/jobs";
+    }
 }
