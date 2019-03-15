@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Document</title>
-        <link rel="stylesheet" href="./../../bootstrap/bootstrap.css" />
-        <link rel="stylesheet" href="./../../css/main.css" />
+        <link rel="stylesheet" href="./../bootstrap/bootstrap.css" />
+        <link rel="stylesheet" href="./../css/main.css" />
     </head>
     <body>
         <nav class="custom-navbar">
@@ -21,30 +21,58 @@
                 </ul>
             </div>
         </nav>
+        <div class="container">
+            <div class="bcca-card">
+                {{#detail}}
+                <div class="detail-header">
+                    <img class="detail-img" src="{{imageUrl}}" alt="" width="50" height="50">
+                    <div class="detail-name">{{ name }}</div>
+                </div>
+                <div class="detail-box">
+                    <p class="detail-title">Address</p>
+                    <p>{{ address }}</p>
+                </div>
+                <div class="detail-box">
+                    <p class="detail-title">Position</p>
+                    <p>{{ position }}</p>
+                </div>
+                <div class="detail-box">
+                    <p class="detail-title">Description</p>
+                    <p>{{ description }}</p>
+                </div>
+                <div class="detail-box">
+                        <p class="detail-title">Benefits</p>
+                        <p>{{ benefits }}</p>
+                </div>
+                <a href="{{applyUrl}}"><button class="apply-btn">Apply Now</button></a> 
 
-        {{#detail}}
-        <p>{{ name }}</p>
-        <p>{{ address }}</p>
-        <p>{{ position }}</p>
-        <p>Comments</p>
+                
 
-        {{#comments}}
-        <p>{{ title }}</p>
-        {{/comments}}
+                {{#comments}}
+                <p class="comments-header">Comments</p>
+                <p>{{ title }}</p>
+                {{/comments}}
+                <div class="comment-box">
+                    <form action="/admin/{{ id }}" method="post">
+                        <label for="title">Title: </label>
+                        <br />
+                        <input name="title" type="text" />
+                        <br />
+                        <label for="description">Description</label>
+                        <br />
+                        <textarea name="description" rows="1"></textarea>
+                        <br />
+                        <button class="comment-btn" type="submit">Submit</button>
+                    </form>
+                </div>
 
-        <p>Comment</p>
-
-        <form action="/admin/jobs/{{ id }}" method="post">
-            <label for="title">Title: </label>
-            <br />
-            <input name="title" type="text" />
-            <br />
-            <label for="description">Description</label>
-            <br />
-            <textarea name="description" rows="1"></textarea>
-            <br />
-            <button type="submit">Submit</button>
-        </form>
-        {{/detail}}
+                <div class="danger-zone">
+                    <form action="/admin/{{ id }}/delete" method="GET">
+                        <button>Delete</button>
+                    </form>
+                </div>
+                {{/detail}}
+            </div>
+        </div>
     </body>
 </html>
