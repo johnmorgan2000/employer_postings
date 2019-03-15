@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS employer_posts(
     employer_name TEXT NOT NULL,
     address TEXT NOT NULL,
     position TEXT NOT NULL,
+    description TEXT NOT NULL,
     benefits TEXT NOT NULL,
     apply_url TEXT,
     image_url TEXT,
