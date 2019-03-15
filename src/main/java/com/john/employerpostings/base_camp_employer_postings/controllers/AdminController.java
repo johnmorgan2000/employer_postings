@@ -23,19 +23,19 @@ public class AdminController {
         jpRepository = repository;
     }
 
-    @GetMapping("/admin")
-    public String index() {
-        return "admin_home";
-    }
+    // @GetMapping("/admin")
+    // public String index() {
+    //     return "admin_home";
+    // }
 
-    @GetMapping("/admin/jobs")
+    @GetMapping("/admin")
     public String getJobs(Model model) {
-        List<JobPost> jobs = jpRepository.findAllJobs();
+        List<JobPost> jobs = jpRepository.findAllByNewest();
         model.addAttribute("jobs", jobs);
         return "admin_jobs";
     }
 
-    @GetMapping("/admin/jobs/{id}")
+    @GetMapping("/admin/{id}")
     public String getDetails(Model model, @PathVariable(value = "id") String id) {
         var detail = jpRepository.findJobById(Integer.parseInt(id));
         
@@ -49,14 +49,14 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/admin/jobs/{id}")
+    @PostMapping("/admin/{id}")
     public String postComment(CreateCommentForm form, Model model, @PathVariable(value = "id") String id) {
         Comment com = new Comment(form.getTitle(), form.getDescription(), Integer.parseInt(id));
         jpRepository.addComment(com);
         return "redirect:/admin/jobs/" + id;
     }
 
-    @GetMapping("/admin/jobs/{id}/delete")
+    @GetMapping("/admin/{id}/delete")
     public String deletePost(@PathVariable(value = "id") String id){
         System.out.println(id);
         jpRepository.deletePost( Integer.parseInt(id));
