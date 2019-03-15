@@ -21,7 +21,7 @@ public class JobsDisplayController {
 
     @GetMapping("/jobs")
     public String index(Model model){
-        List<JobPost> jobs = jpRepository.findAllJobs();
+        List<JobPost> jobs = jpRepository.findAllByNewest();
         model.addAttribute("jobs", jobs);
         return "jobs_display";
     }

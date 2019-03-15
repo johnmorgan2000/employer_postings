@@ -12,6 +12,8 @@ public class CreatePostForm{
     @NotNull
     public String position;
     @NotNull
+    public String description;
+    @NotNull
     public String benefits;
 
     public String applyUrl;
@@ -42,6 +44,8 @@ public class CreatePostForm{
         this.position = position;
     }
 
+    
+
     public String getBenefits() {
         return benefits;
     }
@@ -64,6 +68,14 @@ public class CreatePostForm{
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

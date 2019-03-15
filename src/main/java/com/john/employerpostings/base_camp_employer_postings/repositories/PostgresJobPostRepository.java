@@ -28,12 +28,13 @@ public class PostgresJobPostRepository{
     }
 
     public void addJobPost(JobPost jp){
-        String sql = "INSERT INTO employer_posts (employer_name, address, position, benefits, apply_url, image_url, posted_date) VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO employer_posts (employer_name, address, position, description, benefits, apply_url, image_url, posted_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         jdbc.update(
             sql,
             jp.getName(),
             jp.getAddress(),
             jp.getPosition(),
+            jp.getDescription(),
             jp.getBenefits(),
             jp.getApplyUrl(),
             jp.getImageUrl(),
@@ -41,13 +42,19 @@ public class PostgresJobPostRepository{
         );
     }
 
+
     public void addComment(Comment com){
         String sql = "INSERT INTO admin_comments (title, description, post_id) VALUES (?, ?, ?);";
         jdbc.update(sql, com.getTitle(), com.getDescription(), com.getPostId());
     }
 
-    public List<JobPost> findAllJobs(){
+
+    public List<JobPost> findAllByNewest(){
         return jdbc.query("SELECT * FROM employer_posts ORDER BY posted_date DESC;", this::mapToJobPost);
+    }
+
+    public List<JobPost> findAllByOldest(){
+        return jdbc.query("SELECT * FROM employer_posts ORDER BY posted_date ASC;", this::mapToJobPost);
     }
 
     public Optional<JobPost> findJobById(int id){
@@ -79,6 +86,7 @@ public class PostgresJobPostRepository{
         rs.getString("employer_name"), 
         rs.getString("address"), 
         rs.getString("position"), 
+        rs.getString("description"),
         rs.getString("benefits"), 
         rs.getString("apply_url"), 
         rs.getString("image_url"),

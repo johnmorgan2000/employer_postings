@@ -8,26 +8,29 @@ public class JobPost{
     public String name;
     public String address;
     public String position;
+    public String description;
     public String benefits;
     public String applyUrl;
     public String imageUrl;
     public Timestamp postedDate;
 
-    public JobPost(String name, String address, String position, String benefits, String applyUrl, String imageUrl){
+    public JobPost(String name, String address, String position, String description, String benefits, String applyUrl, String imageUrl){
         this.name = name;
         this.address = address;
         this.position = position;
+        this.description = description;
         this.benefits = benefits;
         this.applyUrl = applyUrl;
         this.imageUrl = imageUrl;
         this.postedDate = getTime();
     }
 
-    public JobPost(int id, String name, String address, String position, String benefits,String applyUrl, String imageUrl, Timestamp postedDate){
+    public JobPost(int id, String name, String address, String position, String description, String benefits,String applyUrl, String imageUrl, Timestamp postedDate){
         this.id = id;
         this.name = name;
         this.address = address;
         this.position = position;
+        this.description = description;
         this.benefits = benefits;
         this.applyUrl = applyUrl;
         this.imageUrl = imageUrl;
@@ -103,5 +106,12 @@ public class JobPost{
         this.postedDate = postedDate;
     }
 
-    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }
