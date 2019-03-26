@@ -15,7 +15,6 @@ public class CreatePostForm{
     public String description;
     @NotNull
     public String benefits;
-
     public String applyUrl;
 
     public String imageUrl;
