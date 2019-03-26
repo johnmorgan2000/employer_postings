@@ -72,8 +72,16 @@ public class PostgresJobPostRepository{
         jdbc.update(sql, id);
     }
 
+    public void deleteComment(int id){
+        String sql = "DELETE FROM admin_comments WHERE id = ?;";
+        jdbc.update(sql, id);
+    }
+
+    
+
     public Comment mapToComment(ResultSet rs, int rowNum) throws SQLException {
         return new Comment(
+            rs.getInt("id"),
             rs.getString("title"),
             rs.getString("description"),
             rs.getInt("post_id")
