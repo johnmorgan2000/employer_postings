@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS employer_posts(
     address TEXT NOT NULL,
     position TEXT NOT NULL,
     description TEXT NOT NULL,
-    benefits TEXT NOT NULL,
+    benefits TEXT,
     apply_url TEXT,
     image_url TEXT,
     posted_date TIMESTAMP NOT NULL
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS admin_comments(
     id SERIAL NOT NULL,
     title TEXT NOT NULL,
     description TEXT NOT NULL,
-    post_id int REFERENCES employer_posts (id)
+    post_id int REFERENCES employer_posts (id) ON DELETE CASCADE
 );
 
 ALTER TABLE employer_posts OWNER TO "user";
