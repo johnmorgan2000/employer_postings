@@ -13,6 +13,8 @@ public class JobPost{
     public String applyUrl;
     public String imageUrl;
     public Timestamp postedDate;
+    public String formattedDate;
+    public String formattedTime;
 
     public JobPost(String name, String address, String position, String description, String benefits, String applyUrl, String imageUrl){
         this.name = name;
@@ -35,12 +37,41 @@ public class JobPost{
         this.applyUrl = applyUrl;
         this.imageUrl = imageUrl;
         this.postedDate = postedDate;
+        this.formattedDate = formatDate(this.postedDate);
+        this.formattedTime = formatTime(this.postedDate);
     }
 
     public static Timestamp getTime(){
         Date date = new Date();
         return new Timestamp(date.getTime());
     }
+
+    public static String formatDate(Timestamp ts){
+        String stringTs = ts.toString();
+        String[] dateTimeSplit =  stringTs.split(" ");
+
+        
+        return dateTimeSplit[0];
+    };
+
+    public static String formatTime(Timestamp ts){
+        String stringTs = ts.toString();
+        String[] dateTimeSplit =  stringTs.split(" ");
+        String period;
+        Integer returnedHour;
+        String[] hourMinuteSecondSplit =  dateTimeSplit[1].split(":");
+        Integer hour = Integer.parseInt(hourMinuteSecondSplit[0]);
+        
+        if (hour > 12){
+            period = "pm";
+            returnedHour = hour - 12;
+        }else {
+            period = "am";
+            returnedHour = hour;
+        }
+        return String.format("%s:%s %s", returnedHour, hourMinuteSecondSplit[1], period);
+    }
+
 
     public String getName() {
         return name;
