@@ -23,11 +23,6 @@ public class AdminController {
         jpRepository = repository;
     }
 
-    // @GetMapping("/admin")
-    // public String index() {
-    //     return "admin_home";
-    // }
-
     @GetMapping("/admin")
     public String getJobs(Model model) {
         List<JobPost> jobs = jpRepository.findAllByNewest();
@@ -43,6 +38,7 @@ public class AdminController {
             List<Comment> coms =  jpRepository.findPostComments( Integer.parseInt(id));
             model.addAttribute("detail", detail.get());
             model.addAttribute("comments", coms);
+            
             return "admin_job_details";
         } else {
             return "404";
@@ -53,13 +49,20 @@ public class AdminController {
     public String postComment(CreateCommentForm form, Model model, @PathVariable(value = "id") String id) {
         Comment com = new Comment(form.getTitle(), form.getDescription(), Integer.parseInt(id));
         jpRepository.addComment(com);
-        return "redirect:/admin/jobs/" + id;
+        return "redirect:/admin/" + id;
     }
 
     @GetMapping("/admin/{id}/delete")
     public String deletePost(@PathVariable(value = "id") String id){
-        System.out.println(id);
         jpRepository.deletePost( Integer.parseInt(id));
-        return "redirect:/admin/jobs";
+        return "redirect:/admin";
     }
+
+    @GetMapping("/admin/{comment_id}/comment-delete")
+    public String deleteComment(@PathVariable("comment_id") String comment_id){
+        System.out.println("hey");
+        jpRepository.deleteComment( Integer.parseInt(comment_id));
+        return "redirect:/admin" ;
+    }
+    
 }
