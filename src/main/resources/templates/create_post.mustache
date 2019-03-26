@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>BCCA Job Posting</title>
 
-        <link rel="stylesheet" href="./bootstrap/bootstrap.css" />
-        <link rel="stylesheet" href="./css/main.css" />
+        <link rel="stylesheet" href="/bootstrap/bootstrap.css" />
+        <link rel="stylesheet" href="/css/main.css" />
     </head>
     <body>
         <nav class="custom-navbar">
@@ -16,42 +16,69 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
                 </ul>
             </div>
         </nav>
-        <form action="create" method="POST">
-            <label for="name">Name: </label>
-            <input type="text" name="name" required />
+        <div class="container">
+            <div class="bcca-card">
+                <form action="create" method="POST">
+                    <div class="pb-2 create-inputs">
+                        <div class="row">
+                            <label class="col-2" for="name">Name: </label>
+                            <input type="text" name="name" required />
+                        </div>
 
-            <label for="address">Address: </label>
-            <input type="text" name="address" required />
+                        <div class="row">
+                            <label class="col-2" for="address">Address: </label>
+                            <input type="text" name="address" required />
+                        </div>
 
-            <label for="position">Position: </label>
-            <input type="text" name="position" required />
+                        <div class="row">
+                            <label class="col-2" for="position">Position: </label>
+                            <input type="text" name="position" required />
+                        </div>
 
-            <label for="description">Description: </label>
-            <textarea name="description" id="" cols="30" rows="1"></textarea>
+                        <div class="row">
+                            <label class="col-2" for="description">Description: </label>
+                            <textarea
+                                name="description"
+                                id=""
+                                cols="30"
+                                rows="1"
+                                required
+                            ></textarea>
+                        </div>
 
-            <label for="benefits">Benefits: </label>
-            <input type="text" name="benefits" required />
+                        <div class="row">
+                            <label class="col-2" for="benefits">Benefits: </label>
+                            <input type="text" name="benefits" required />
+                        </div>
 
-            <label for="applyUrl">Url: </label>
-            <input type="text" name="applyUrl" required />
+                        <div class="row">
+                            <label class="col-2" for="applyUrl">Url: </label>
+                            <input type="text" name="applyUrl" required />
+                        </div>
 
-            <label for="imageUrl"></label>
-            <input
-                type="file"
-                name="imageFile"
-                onchange="previewFile()"
-                id="imageFileInput"
-            />
-            <input class="hidden" type="text" name="imageUrl" id="imageUrl" />
-
-            <button type="submit">Submit</button>
-        </form>
+                        <div class="row">
+                            <label class="col-2" for="imageUrl">Logo:</label>
+                            <input
+                                type="file"
+                                name="imageFile"
+                                onchange="previewFile()"
+                                id="imageFileInput"
+                            />
+                            <input
+                                class="hidden"
+                                type="text"
+                                name="imageUrl"
+                                id="imageUrl"
+                            />
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
 
         <script>
             function previewFile() {

@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Document</title>
-        <link rel="stylesheet" href="./bootstrap/bootstrap.css" />
-        <link rel="stylesheet" href="./css/main.css" />
+        <link rel="stylesheet" href="/bootstrap/bootstrap.css" />
+        <link rel="stylesheet" href="/css/main.css" />
     </head>
     <body>
         <nav class="custom-navbar">
@@ -26,17 +26,18 @@
             <form action="/jobs" method="POST">
                 <div>
                     <p>
-                        Newest-Oldest
                         <input
+                            class="sortBy"
                             type="radio"
                             name="sortBy"
                             value="newToOld"
                             checked
                         />
+                        Newest-Oldest
                     </p>
                     <p>
+                        <input class="sortBy" type="radio" name="sortBy" value="oldToNew" />
                         Oldest-Newest
-                        <input type="radio" name="sortBy" value="oldToNew" />
                     </p>
                 </div>
                 <button type="submit">Done</button>
@@ -47,32 +48,6 @@
         <a href="/jobs/{{ id }}">{{ name }}</a>
         <p>{{ postedDate }}</p>
         {{/jobs}}
-        <script>
-            var radios = document.querySelectorAll("input[name=sortBy]");
-
-            window.onload = function() {
-                if (localStorage.getItem("filter") !== null) {
-                    var filter = localStorage.getItem("filter");
-                    for (var radio of radios){
-                        // radio.checked = false;
-                        if (radio.value === filter){
-                            radio.checked = true;
-                        }
-                    }
-
-
-                    
-                }
-            };
-            for (const radio of radios){
-                radio.onclick = function() {
-                    if (radio.checked === true){
-                        localStorage.setItem("filter", radio.value);
-                    }
-                
-            };
-            }
-            
-        </script>
+        <script src="/js/index.js"></script>
     </body>
 </html>

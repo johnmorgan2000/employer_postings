@@ -5,9 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Document</title>
-        <link rel="stylesheet" href="./../bootstrap/bootstrap.css" />
-        <link rel="stylesheet" href="./../css/main.css" />
+        <link rel="stylesheet" href="bootstrap/bootstrap.css" />
+        <link rel="stylesheet" href="css/main.css" />
     </head>
+
     <body>
         <nav class="custom-navbar">
             <div class="container">
@@ -15,18 +16,60 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
                 </ul>
             </div>
         </nav>
-        {{#jobs}}
-        <a href="/admin/jobs/{{ id }}">{{ name }}</a>
-        <p>{{ postedDate }}</p>
-        {{/jobs}}
-        {{^jobs}}
-        <p>No current jobs</p>
-        {{/jobs}}
+        <div class="container">
+            <div class="bcca-card">
+                <div>
+                    <form class="filter-form" action="/admin" method="POST">
+                        <div>
+                            <p>
+                                <input
+                                    class="adminSortBy"
+                                    type="radio"
+                                    name="sortBy"
+                                    value="newToOld"
+                                    checked
+                                />
+                                Newest-Oldest
+                            </p>
+                            <p>
+                                <input
+                                    class="adminSortBy"
+                                    type="radio"
+                                    name="sortBy"
+                                    value="oldToNew"
+                                />
+                                Oldest-Newest
+                            </p>
+                        </div>
+                        <button class="filter-btn" type="submit">Apply</button>
+                    </form>
+                </div>
+                {{#jobs}}
+                <a class="job-box-link" href="/admin/{{ id }}">
+                    <div class="job-box row">
+                        <div class="job-box-img">
+                            <img
+                                src="{{ imageUrl }}"
+                                alt=""
+                                width="100"
+                                height="100"
+                            />
+                        </div>
+                        <div class="job-box-info row">
+                            <small class="col-11">{{ postedDate }}</small>
+                            <p class="col-11">{{ name }}</p>
+                        </div>
+                    </div>
+                </a>
+                {{/jobs}}
+                {{^jobs}}
+                <p>No current jobs</p>
+                {{/jobs}}
+            </div>
+        </div>
+        <script src="/js/index.js"></script>
     </body>
 </html>
