@@ -26,7 +26,39 @@ class Filter {
         }
     }
 }
+// Helps create the top chart display
+const viewElements = document.querySelectorAll("p.job-views-bubble");
+const bars = document.querySelectorAll(".chart-bar");
 
+
+function topChartDisplay(viewElements, bars){
+    var maxNum = getMaxForViewChart(viewElements);
+    
+    for (var i =0; i < viewElements.length; i++){
+        var percentage = (parseInt(viewElements[i].innerText) * 100) / maxNum;
+        bars[i].style.width = percentage + "%";
+    }
+}
+
+function getMaxForViewChart(views){
+    var highNum =0;
+    var maxNum;
+    
+    for (var view of views){
+        view = parseInt(view.innerText);
+        if (view > highNum){
+            highNum = view;
+        }
+    }
+
+    if (highNum % 10 !== 0){
+        var roundedUp = Math.ceil(highNum * .10);
+        roundedUp *= 10;
+    }
+    return roundedUp;
+}
+
+// Hide empty detail boxes
 function cleanUp(){
     var boxes = document.querySelectorAll(".detail-box");
     for (const box of boxes){
@@ -37,7 +69,8 @@ function cleanUp(){
     }
 }
 
-// onchange handler for file input
+
+// Onchange handler for file input
 function imageUrlHandler() {
     var imgUrl = document.querySelector("#imageUrl");
     var file = document.querySelector("input[type=file]").files[0];
@@ -69,4 +102,6 @@ if (adminRadios !== null) {
 }
 
 cleanUp();
+topChartDisplay(viewElements, bars);
+
 
