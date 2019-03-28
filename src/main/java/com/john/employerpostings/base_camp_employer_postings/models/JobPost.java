@@ -15,6 +15,7 @@ public class JobPost{
     public Timestamp postedDate;
     public String formattedDate;
     public String formattedTime;
+    public Integer views;
 
     public JobPost(String name, String address, String position, String description, String benefits, String applyUrl, String imageUrl){
         this.name = name;
@@ -27,7 +28,7 @@ public class JobPost{
         this.postedDate = getTime();
     }
 
-    public JobPost(int id, String name, String address, String position, String description, String benefits,String applyUrl, String imageUrl, Timestamp postedDate){
+    public JobPost(int id, String name, String address, String position, String description, String benefits,String applyUrl, String imageUrl, Timestamp postedDate, Integer views){
         this.id = id;
         this.name = name;
         this.address = address;
@@ -39,6 +40,7 @@ public class JobPost{
         this.postedDate = postedDate;
         this.formattedDate = formatDate(this.postedDate);
         this.formattedTime = formatTime(this.postedDate);
+        this.views = views;
     }
 
     public static Timestamp getTime(){
@@ -143,6 +145,14 @@ public class JobPost{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setViews(Integer views){
+        this.views = views;
+    }
+
+    public Integer getViews(){
+        return views;
     }
 
 }
