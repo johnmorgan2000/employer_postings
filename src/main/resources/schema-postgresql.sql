@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS employer_posts(
     benefits TEXT,
     apply_url TEXT,
     image_url TEXT,
-    posted_date TIMESTAMP NOT NULL
+    posted_date TIMESTAMP NOT NULL,
+    views INT
 );
 
 CREATE TABLE IF NOT EXISTS admin_comments(
