@@ -25,6 +25,7 @@ public class JobDetailsController{
         var detail = jpRepository.findJobById(Integer.parseInt(id));
         if (detail.isPresent()){
             List<Comment> coms =  jpRepository.findPostComments( Integer.parseInt(id));
+            jpRepository.addViewCount(Integer.parseInt(id));
             model.addAttribute("detail", detail.get());
             model.addAttribute("comments", coms);
             return "job_detail";
