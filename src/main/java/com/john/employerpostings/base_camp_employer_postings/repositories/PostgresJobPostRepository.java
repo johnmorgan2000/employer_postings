@@ -28,7 +28,7 @@ public class PostgresJobPostRepository{
     }
 
     public void addJobPost(JobPost jp){
-        String sql = "INSERT INTO employer_posts (employer_name, address, position, description, benefits, apply_url, image_url, posted_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO employer_posts (employer_name, address, position, description, benefits, apply_url, image_url, posted_date, views) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0);";
         jdbc.update(
             sql,
             jp.getName(),
@@ -77,6 +77,11 @@ public class PostgresJobPostRepository{
         jdbc.update(sql, id);
     }
 
+    public List<JobPost> getTopFive(){
+        String sql = "SELECT * FROM employer_posts ORDER BY views DESC LIMIT 5";
+        return jdbc.query(sql, this::mapToJobPost);
+    }
+
     
 
     public Comment mapToComment(ResultSet rs, int rowNum) throws SQLException {
@@ -86,6 +91,11 @@ public class PostgresJobPostRepository{
             rs.getString("description"),
             rs.getInt("post_id")
         );
+    }
+
+    public void addViewCount(int id){
+        String sql = "UPDATE employer_posts SET views = views + 1 WHERE id = ?;";
+        jdbc.update(sql, id);
     }
 
     public JobPost mapToJobPost(ResultSet rs, int rowNum) throws SQLException {
@@ -98,6 +108,7 @@ public class PostgresJobPostRepository{
         rs.getString("benefits"), 
         rs.getString("apply_url"), 
         rs.getString("image_url"),
-        rs.getTimestamp("posted_date"));
+        rs.getTimestamp("posted_date"),
+        rs.getInt("views"));
     }
 }
