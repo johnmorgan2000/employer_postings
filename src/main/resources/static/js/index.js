@@ -1,22 +1,15 @@
 class Filter {
 
     main(storageName, radios) {
-        window.onload = function() {
-            // console.log(localStorage.getItem(storageName));
-            if (localStorage.getItem(storageName) !== null) {
+            if (localStorage.getItem(storageName) !== null) { 
                 var filter = localStorage.getItem(storageName);
-                console.log(radios);
                 for (var radio of radios) {
-                    console.log("radio: " + radio.value);
-                    console.log("filter: " + filter);
-                    // radio.checked = false;
                     if (radio.value === filter) {
                         radio.checked = true;
                         localStorage.clear();
                     }
                 }
             }
-        };
         for (const radio of radios) {
             radio.onclick = function() {
                 if (radio.checked === true) {
@@ -52,10 +45,13 @@ function getMaxForViewChart(views){
     }
 
     if (highNum % 10 !== 0){
-        var roundedUp = Math.ceil(highNum * .10);
-        roundedUp *= 10;
+        var finalNum = Math.ceil(highNum * .10);
+        finalNum *= 10;
     }
-    return roundedUp;
+    else{
+        finalNum = highNum;
+    }
+    return finalNum;
 }
 
 // Hide empty detail boxes
@@ -87,18 +83,23 @@ function imageUrlHandler() {
     }
 }
 
+// radio button checker
+var userRadios = document.querySelectorAll("input.sortBy");
+var adminRadios = document.querySelectorAll("input.adminSortBy");
 
-const radios = document.querySelectorAll("input.sortBy");
-const adminRadios = document.querySelectorAll("input.adminSortBy");
-
-if (radios !== null) {
-    const filter = new Filter();
-    filter.main("filter", radios);
-} 
-
-if (adminRadios !== null) {
+if (userRadios.length !== 0) {
+    adminRadios = null;
+    const userFilter = new Filter();
+    window.onload = function() {
+        userFilter.main("filter", userRadios);
+    }
+    
+} else {
     const adminFilter = new Filter();
-    adminFilter.main("adminFilter", adminRadios);
+    window.onload = function() {
+        adminFilter.main("adminFilter", adminRadios);
+    }
+    
 }
 
 cleanUp();
