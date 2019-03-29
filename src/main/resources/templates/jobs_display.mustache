@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Document</title>
+        <title>BCCA Jobs</title>
         <link rel="stylesheet" href="/bootstrap/bootstrap.css" />
         <link rel="stylesheet" href="/css/main.css" />
     </head>
@@ -22,6 +22,7 @@
         <div class="container">
             <div class="bcca-card">
                 <div>
+                    
                     <form class="filter-form" action="/jobs" method="POST">
                         <div class="row">
                                 <p class="col-sm-12 col-md-3 col-lg-3">
@@ -73,6 +74,9 @@
                         <button class="filter-btn" type="submit">Apply</button>
                     </form>
                 </div>
+                <div>
+                    <input type="search" class="searchBar" placeholder="Search">
+                </div>
                 <div class="job-container row justify-content-between">
                     {{#jobs}}
                     <a
@@ -107,7 +111,7 @@
                                     {{ views }}
                                 </small>
                             </div>
-                            <p class="col-12">Position: {{ position }}</p>
+                            <p class="job-box-position col-12">Position: {{ position }}</p>
                             <p class="col-12">Location: {{ address }}</p>
                         </div>
                     </a>
