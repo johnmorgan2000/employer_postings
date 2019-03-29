@@ -5,7 +5,7 @@ ALTER DEFAULT PRIVILEGES GRANT ALL ON TABLES TO "user";
 
 CREATE TABLE IF NOT EXISTS employer_posts(
     id SERIAL PRIMARY KEY,
-    employer_name TEXT NOT NULL,
+    company_name TEXT NOT NULL,
     address TEXT NOT NULL,
     position TEXT NOT NULL,
     description TEXT NOT NULL,
