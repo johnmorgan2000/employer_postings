@@ -83,6 +83,31 @@ function imageUrlHandler() {
     }
 }
 
+function listenForSearch() {
+    const searchBar = document.querySelector(".searchBar");
+    searchBar.addEventListener("input", function() {
+        searchApplications();
+    });
+}
+
+function searchApplications() {
+    var searchInput = document
+        .querySelector(".searchBar")
+        .value.toLowerCase();
+    var jobContainers = document.querySelectorAll(
+        ".job-box-link"
+    );
+    for (const job of jobContainers) {
+        var name = job.querySelector(".job-box-title").innerText.toLowerCase();
+        var position = job.querySelector(".job-box-position").innerText.toLowerCase();
+        if (name.includes(searchInput) || position.includes(searchInput)) {
+            job.classList.remove("searched");
+        } else {
+            job.classList.add("searched");
+        }
+    }
+}
+
 // radio button checker
 var userRadios = document.querySelectorAll("input.sortBy");
 var adminRadios = document.querySelectorAll("input.adminSortBy");
@@ -104,5 +129,6 @@ if (userRadios.length !== 0) {
 
 cleanUp();
 topChartDisplay(viewElements, bars);
+listenForSearch();
 
 
