@@ -45,6 +45,10 @@ public class SortingController{
             jobs = jpRepository.findAllByNewest();
         }else if (result.equals("oldToNew")){
             jobs = jpRepository.findAllByOldest();
+        }else if (result.equals("a-z")){
+            jobs = jpRepository.findAllByATOZ();
+        }else if (result.equals("z-a")){
+            jobs = jpRepository.findAllByZTOA();
         }
         else{
             jobs = jpRepository.findAllByNewest();
