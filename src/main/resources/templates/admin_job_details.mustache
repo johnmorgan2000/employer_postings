@@ -24,6 +24,7 @@
                 </ul>
             </div>
         </nav>
+        <div class="image-header-block"></div>
         <div class="container">
             <div class="bcca-card">
                 {{#detail}}
@@ -34,21 +35,21 @@
                     <div class="detail-body-section col-12">
                         <div class="detail-box">
                             <p class="detail-title">Address</p>
-                            <p>{{ address }}</p>
+                            <p class="detail-body">{{ address }}</p>
                         </div>
 
                         <div class="detail-box">
                             <p class="detail-title">Position</p>
-                            <p>{{ position }}</p>
+                            <p class="detail-body">{{ position }}</p>
                         </div>
 
                         <div class="detail-box">
                             <p class="detail-title">Description</p>
-                            <p>{{ description }}</p>
+                            <p class="detail-body">{{ description }}</p>
                         </div>
                         <div class="detail-box">
                             <p class="detail-title">Benefits</p>
-                            <p>{{ benefits }}</p>
+                            <p class="detail-body">{{ benefits }}</p>
                         </div>
                     </div>
                 </div>
@@ -94,5 +95,6 @@
                 {{/detail}}
             </div>
         </div>
+        <script src="/js/index.js"></script>
     </body>
 </html>

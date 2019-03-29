@@ -6,14 +6,23 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>BCCA Employer Posting</title>
         <link rel="stylesheet" href="./bootstrap/bootstrap.css" />
-        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/main.css" />
     </head>
     <body>
         <nav class="custom-navbar">
             <div class="container">
                 <ul>
                     <li>
+                        <a href="/admin">Admin</a>
+                    </li>
+                    <li class="text-white">
+                        |
+                    </li>
+                    <li>
                         <a href="/jobs">Jobs</a>
+                    </li>
+                    <li class="text-white">
+                        |
                     </li>
                     <li>
                         <a href="/create">Create</a>
@@ -21,14 +30,46 @@
                 </ul>
             </div>
         </nav>
+
+        <div class="image-header-block"></div>
+
         <div class="container">
             <div class="bcca-card">
-                <h1>TESTING</h1>
+                <h1>BCCA Job Board</h1>
                 {{#count}}
-                <p>Results total: {{.}}</p>
+                <p>
+                    We have a total of
+                    <span class="home-count-number">{{.}}</span> job posting(s)?
+                    <a href="/jobs"> Go to jobs</a>
+                </p>
                 {{/count}}
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem excepturi vero atque voluptatibus ad dolorem alias veritatis veniam provident repellendus. Vitae ratione non perferendis debitis. Magni voluptatibus fugit reprehenderit odit!</p>
+                <h2>Top Five Most Viewed</h2>
+                <div class="top-chart">
+                    <!-- <div class="row justify-content-between text-right">
+                        <p class="">0</p>
+                        <p class="col-1 p-0">0</p>
+                        <p class="col-1 p-0">0</p>
+                        <p class="col-1 p-0">0</p>
+                        <p class="col-1 p-0">0</p>
+                        <p class="col-1 p-0">0</p>
+                    </div> -->
+                    {{#jobs}}
+                    <a href="jobs/{{id}}">
+                        <div class="job-row row my-3 mx-auto">
+                            <div class="chart-bar"></div>
+                            <p class="job-name-bubble">{{ name }}</p>
+                            <p class="job-views-bubble">{{ views }}</p>
+                        </div>
+                    </a>
+                    {{/jobs}}
+                    {{^jobs}}
+                    <div>
+                        <p>Nothing to show</p>
+                    </div>
+                    {{/jobs}}
+                </div>
             </div>
         </div>
+        <script src="/js/index.js"></script>
     </body>
 </html>

@@ -15,21 +15,58 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
+                    <li class="text-white">
+                        |
+                    </li>
                     <li>
-                        <a href="/">Home</a>
+                        <a href="/jobs">Back</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        {{#detail}}
-        <p>{{ name }}</p>
-        <img src="{{ imageUrl }}" alt="" srcset="" width="100" height="100" />
-        <p>{{ address }}</p>
-        <p>{{ position }}</p>
-        <p>Comments</p>
-        {{ #comments }}
-        <p>{{ title }}</p>
-        {{ /comments }}
-        {{/detail}}
+        <div class="image-header-block"></div>
+        <div class="container">
+            <div class="bcca-card">
+                {{#detail}}
+                <div class="detail-header row pl-2">
+                    <div class="detail-name col-12">{{ name }}</div>
+                </div>
+                <div class="detail-body row">
+                    <div class="detail-body-section col-12">
+                        <div class="detail-box">
+                            <p class="detail-title">Address</p>
+                            <p class="detail-body">{{ address }}</p>
+                        </div>
+
+                        <div class="detail-box">
+                            <p class="detail-title">Position</p>
+                            <p class="detail-body">{{ position }}</p>
+                        </div>
+
+                        <div class="detail-box">
+                            <p class="detail-title">Description</p>
+                            <p class="detail-body">{{ description }}</p>
+                        </div>
+                        
+                        <div class="detail-box">
+                            <p class="detail-title">Benefits</p>
+                            <p class="detail-body">{{ benefits }}</p>
+                        </div>
+                        <a href="{{ applyUrl }}" target="_blank"><button class="mt-2">Apply</button></a>
+                        
+                    </div>
+                </div>
+                {{/detail}}
+
+                {{#comments}}
+                <p class="comments-header">Comments</p>
+                <div class="comment-box col-lg-7 col-md-9 col-sm-12">
+                    <p class="comment-title">{{ title }}</p>
+                    <p>{{ description }}</p>
+                </div>
+                {{/comments}}
+            </div>
+        </div>
+        <script src="/js/index.js"></script>
     </body>
 </html>

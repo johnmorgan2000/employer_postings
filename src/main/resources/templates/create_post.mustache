@@ -19,30 +19,58 @@
                 </ul>
             </div>
         </nav>
+        <div class="image-header-block"></div>
         <div class="container">
             <div class="bcca-card">
                 <form action="create" method="POST">
                     <div class="pb-2 create-inputs">
                         <div class="row">
-                            <label class="col-2" for="name">Name: </label>
-                            <input type="text" name="name" required />
+                            <label class="col-3" for="name">
+                                <span class="text-danger">*</span>
+                                Company:
+                            </label>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="ex. John Doe"
+                                required
+                            />
                         </div>
 
                         <div class="row">
-                            <label class="col-2" for="address">Address: </label>
-                            <input type="text" name="address" required />
+                            <label class="col-3" for="address">
+                                <span class="text-danger">*</span>
+                                Address:
+                            </label>
+                            <input
+                                type="text"
+                                name="address"
+                                placeholder="ex. 123 Something St."
+                                required
+                            />
                         </div>
 
                         <div class="row">
-                            <label class="col-2" for="position">Position: </label>
-                            <input type="text" name="position" required />
+                            <label class="col-3" for="position">
+                                <span class="text-danger">*</span>
+                                Position:
+                            </label>
+                            <input
+                                type="text"
+                                name="position"
+                                placeholder="ex. Software Developer"
+                                required
+                            />
                         </div>
 
                         <div class="row">
-                            <label class="col-2" for="description">Description: </label>
+                            <label class="col-3" for="description">
+                                <span class="text-danger">*</span>
+                                Description:
+                            </label>
                             <textarea
                                 name="description"
-                                id=""
+                                placeholder="Job Details"
                                 cols="30"
                                 rows="1"
                                 required
@@ -50,21 +78,33 @@
                         </div>
 
                         <div class="row">
-                            <label class="col-2" for="benefits">Benefits: </label>
-                            <input type="text" name="benefits" required />
+                            <label class="col-3" for="benefits">
+                                Benefits:
+                            </label>
+                            <textarea
+                                type="text"
+                                name="benefits"
+                                placeholder="Benefits of the job"
+                                cols="30"
+                                rows="1"
+                            ></textarea>
                         </div>
 
                         <div class="row">
-                            <label class="col-2" for="applyUrl">Url: </label>
-                            <input type="text" name="applyUrl" required />
+                            <label class="col-3" for="applyUrl">Url: </label>
+                            <input
+                                type="text"
+                                name="applyUrl"
+                                placeholder="ex. https://example.com/apply"
+                            />
                         </div>
 
                         <div class="row">
-                            <label class="col-2" for="imageUrl">Logo:</label>
+                            <label class="col-3" for="imageUrl">Logo:</label>
                             <input
                                 type="file"
                                 name="imageFile"
-                                onchange="previewFile()"
+                                onchange="imageUrlHandler()"
                                 id="imageFileInput"
                             />
                             <input
@@ -80,39 +120,6 @@
             </div>
         </div>
 
-        <script>
-            function previewFile() {
-                var imgUrl = document.querySelector("#imageUrl");
-                var file = document.querySelector("input[type=file]").files[0];
-                var reader = new FileReader();
-
-                reader.onloadend = function() {
-                    imgUrl.value = reader.result;
-                };
-
-                if (file) {
-                    reader.readAsDataURL(file);
-                } else {
-                    preview.src = "";
-                }
-            }
-
-            // imageInput.addEventListener("change", function() {
-            //     var file = document.querySelector("input[type=file]").files[0];
-            //     var reader = new FileReader();
-
-            //     reader.addEventListener(
-            //         "load",
-            //         function() {
-            //             console.log(reader.result);
-            //         },
-            //         false
-            //     );
-
-            //     if (file) {
-            //         reader.readAsDataURL(file);
-            //     }
-            // });
-        </script>
+        <script src="/js/index.js"></script>
     </body>
 </html>

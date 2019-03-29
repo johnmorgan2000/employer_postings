@@ -19,55 +19,111 @@
                 </ul>
             </div>
         </nav>
+        <div class="image-header-block"></div>
         <div class="container">
             <div class="bcca-card">
                 <div>
                     <form class="filter-form" action="/admin" method="POST">
-                        <div>
-                            <p>
+                        <div class="row">
+                            <p class="col-sm-12 col-md-3 col-lg-3">
                                 <input
+                                    id="adminSortNewToOld"
                                     class="adminSortBy"
                                     type="radio"
                                     name="sortBy"
                                     value="newToOld"
                                     checked
                                 />
-                                Newest-Oldest
+                                <label for="adminSortNewToOld"> Newest-Oldest</label>
                             </p>
-                            <p>
+                            <p class="col-sm-12 col-md-3 col-lg-3">
                                 <input
+                                    id="adminSortOldToNew"
                                     class="adminSortBy"
                                     type="radio"
                                     name="sortBy"
                                     value="oldToNew"
                                 />
-                                Oldest-Newest
+                                <label for="adminSortOldToNew">Oldest-Newest</label>
+                                
+                            </p>
+                            <p class="col-sm-12 col-md-3 col-lg-3">
+                                <input
+                                    id="adminSortA-Z"
+                                    class="adminSortBy"
+                                    type="radio"
+                                    name="sortBy"
+                                    value="a-z"
+                                />
+                                <label for="adminSortA-Z">A-Z</label>
+                                
+                            </p>
+                            <p class="col-sm-12 col-md-3 col-lg-3">
+                                <input
+                                    id="adminSortZ-A"
+                                    class="adminSortBy"
+                                    type="radio"
+                                    name="sortBy"
+                                    value="z-a"
+                                />
+                                <label for="adminSortZ-A">Z-A </label>
+                                
                             </p>
                         </div>
-                        <button class="filter-btn" type="submit">Apply</button>
+                        
+                            <button class="filter-btn" type="submit">
+                                Apply
+                            </button>
+                        
                     </form>
                 </div>
-                {{#jobs}}
-                <a class="job-box-link" href="/admin/{{ id }}">
-                    <div class="job-box row">
-                        <div class="job-box-img">
-                            <img
-                                src="{{ imageUrl }}"
-                                alt=""
-                                width="100"
-                                height="100"
-                            />
+
+                <div class="job-container row justify-content-between">
+                    {{#jobs}}
+                    <a
+                        class="job-box-link col-lg-4 col-md-6 col-sm-11"
+                        href="/admin/{{ id }}"
+                    >
+                        <div class="job-box row">
+                            <p class="job-box-title col-12">{{ name }}</p>
+                            <div class="job-box-img col-lg-4 col-md-4 col-sm-5">
+                                <img
+                                    src="{{ imageUrl }}"
+                                    onerror="this.src = '/images/no-image.png'"
+                                    alt=""
+                                    width="100"
+                                    height="100"
+                                />
+                            </div>
+                            <div class="col-6">
+                                <small class="small-detail">{{
+                                    formattedTime
+                                }}</small>
+                                <br />
+                                <small class="small-detail"
+                                    >({{ formattedDate }})</small
+                                >
+
+                                <br />
+                                <small class="small-detail">
+                                    <img
+                                        class="view-img"
+                                        src="/images/eye.png"
+                                        alt="views"
+                                        height="10"
+                                    />
+                                    {{ views }}
+                                </small>
+                            </div>
+                            <p class="col-12">Position: {{ position }}</p>
+                            <p class="col-12">Location: {{ address }}</p>
                         </div>
-                        <div class="job-box-info row">
-                            <small class="col-11">{{ postedDate }}</small>
-                            <p class="col-11">{{ name }}</p>
-                        </div>
-                    </div>
-                </a>
-                {{/jobs}}
-                {{^jobs}}
-                <p>No current jobs</p>
-                {{/jobs}}
+                    </a>
+                    {{/jobs}}
+                    {{^jobs}}
+                    <p>No current jobs</p>
+                    {{/jobs}}
+                </div>
             </div>
         </div>
         <script src="/js/index.js"></script>
