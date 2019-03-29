@@ -8,8 +8,16 @@
     --danger-red-dark: rgb(177, 70, 70);
 }
 
+.detail-name{
+    word-break: break-all;
+}
+
 html body {
     background-color: #d1d3df;
+}
+
+.searched {
+    display: none;
 }
 
 /* image header */
@@ -83,6 +91,14 @@ input, textarea {
 
 input[type="radio"] {
     width: 30px;
+}
+
+input[type="search"]{
+    border: 1px solid var(--base-grey-dark);
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 15px;
+
 }
 
 /* ---- */
@@ -284,6 +300,8 @@ button.filter-btn:hover{
     font-size: 1.1rem;
     color: var(--base-blue-dark);
 }
+
+
 a.job-box-link {
     text-decoration: none;
     color: black;
@@ -311,6 +329,7 @@ div.job-container {
     margin: 5px;
     margin-left: 0px;
     margin-right: 0px;
+    display: flex;
 }
 
 div.job-box p {
@@ -329,6 +348,11 @@ div.job-box-img img {
     width: 100%;
     height: fit-content;
     
+}
+
+div.job-box p {
+    height: 30px;
+    overflow: auto;
 }
 
 /* ---- */
